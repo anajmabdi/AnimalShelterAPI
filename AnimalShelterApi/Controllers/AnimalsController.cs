@@ -14,11 +14,38 @@ namespace AnimalShelterApi.Controllers
     {
       _db = db;
     }
-
+    
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Animal>>> Get()
+    public async Task<ActionResult<IEnumerable<Animal>>> Get(string species, string name, int minimumAge, string gender, string breed)
     {
-      return await _db.Animals.ToListAsync();
+      IQueryable<Animal> query = _db.Animals.AsQueryable();
+
+      if (species != null)
+      {
+        query = query.Where(entry => entry.Species == species);
+      }
+
+      if(name != null)
+      {
+        query = query.Where(entry => entry.Name == name);
+      }
+
+      if (minimumAge > 0)
+      {
+        query = query.Where(entry => entry.Age >= minimumAge);
+      }
+
+      if (gender != null)
+      {
+        query = query.Where(entry => entry.Gender == gender);
+      }
+
+      if(breed != null)
+      {
+        query = query.Where(entry => entry.Breed == breed);
+      }
+
+      return await query.ToListAsync();
     }
 
     [HttpGet("{id}")]
