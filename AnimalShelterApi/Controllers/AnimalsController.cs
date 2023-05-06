@@ -41,7 +41,7 @@ namespace AnimalShelterApi.Controllers
       await _db.SaveChangesAsync();
       return CreatedAtAction(nameof(GetAnimal), new { id = animal.AnimalId }, animal);
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Animal animal)
     {
@@ -74,6 +74,21 @@ namespace AnimalShelterApi.Controllers
     private bool AnimalExists(int id)
     {
       return _db.Animals.Any(e => e.AnimalId == id);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAnimal(int id)
+    {
+      Animal animal = await _db.Animals.FindAsync(id);
+      if (animal == null)
+      {
+        return NotFound();
+      }
+
+      _db.Animals.Remove(animal);
+      await _db.SaveChangesAsync();
+
+      return NoContent();
     }
   }
 }
