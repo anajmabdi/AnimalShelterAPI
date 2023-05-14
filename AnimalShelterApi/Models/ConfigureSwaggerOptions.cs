@@ -39,7 +39,8 @@ namespace AnimalShelterApi
         public void Configure(string name, SwaggerGenOptions options)
         {
             Configure(options);
-        } 
+        }
+
 
         /// <summary>
         /// Create information about the version of the API
