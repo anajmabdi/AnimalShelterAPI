@@ -71,13 +71,14 @@ You must make sure the following software packages are locally installed in orde
 * You will be utilizing the following search queries:   
 *species, name, minimumAge, minimumAge, gender, breed*<ul>
 * Add a *question mark, the name of the query, and '='* at the end of the URL after your particular search to sort through the results:
-    - Example: *http://localhost:5000/api/animalshelterapi/animals?type=cat* 
+    - Example: *http://localhost:5000/api/animalshelterapi/animals?species=cat* 
 
 
 ### POST: */api/v1/animalshelterapi/animals*
 * To add a new animal to the database, you will need to make a POST request. Copy and paste the following code into the body of your request:
 <pre>{
-  "type": "string",
+  "species": "string",
+  "breed": "string",
   "name": "string",
   "gender": "string",
   "age": 0
