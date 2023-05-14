@@ -75,7 +75,7 @@ You must make sure the following software packages are locally installed in orde
 
 
 ### POST: */api/v1/animalshelterapi/animals*
-* To add a new animal to the database, you will need to make a POST request. Copy and paste the following code into the body of your request:
+* To add a new animal to the database, you will need to make a POST request. Copy and paste the following code into the body of your request and change the values:
 <pre>{
   "species": "string",
   "breed": "string",
@@ -83,7 +83,7 @@ You must make sure the following software packages are locally installed in orde
   "gender": "string",
   "age": 0
 }</pre>
-* Change the "*0*" and "*string*" areas to match the animals details and submit your request. If field requirements are met, your new entry will be added to database. If not, an error will be returned stating the issue.
+
 
 ### GET: */api/v1/animalshelterapi/animals/{id}*
 * Add the ID number of the requested entry to the end of the URL to get one animal:  
